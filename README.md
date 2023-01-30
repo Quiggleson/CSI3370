@@ -5,3 +5,5 @@ MacOS/Linux:
 
 Windows:
 gradlew.bat spring-boot:run
+
+Then go to http://localhost:8080/hello in your browser
