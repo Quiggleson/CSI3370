@@ -1,9 +1,5 @@
-Open the command prompt and navigate to the demo directory
+Download .NET SDK 7.0 from https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
-MacOS/Linux:
-./gradlew spring-boot:run
+Run from Visual Studio or
 
-Windows:
-gradlew.bat spring-boot:run
-
-Then go to http://localhost:8080/hello in your browser
+Run ``dotnet run`` in the command line
