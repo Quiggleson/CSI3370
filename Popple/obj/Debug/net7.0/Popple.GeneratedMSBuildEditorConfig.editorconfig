@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/rob-quigs/Documents/CSI3370/Popple/Pages/tests3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvdGVzdHMzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/rob-quigs/Documents/CSI3370/Popple/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
