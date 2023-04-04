@@ -10,7 +10,7 @@ Run ``aws configure --profile "s3profile"``
 
 You will be prompted for an access key, a secret key, and a default region
 
-For the access keys, see the document in the root directory of this project. Note: the user in the accesskeys file is the username of the IAM user, this is not "s3profile". This is on purpose. You don't really need the username of the IAM user, but it's there in case we might, so discard it for now.
+For the access keys, see the document in the root directory of this project. Note: the user in the accesskeys file is the username of the IAM user, this is not "s3profile". This is on purpose. You don't really need the username of the IAM user, but it's there in case we might, so disregard it for now.
 
 For the default region, enter ``us-east-2``
 
