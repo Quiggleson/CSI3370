@@ -6,19 +6,18 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container">
-    <label for="usrname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="usrname" required>
-    <br>
-
-    <label for="pswrd"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pswrd" required>
-    <br>
-
-    <button type="submit">Login</button>
-    <br>
-
-    <label>
-      <input type="checkbox" checked="unchecked" name="remember"> Remember me
-    </label>
-    <br>
-  </div>
+  <form method="post">
+        <div class="form-group">
+            <label for="Email">Email address</label>
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <label>
+          <input type="checkbox" checked="unchecked" name="remember"> Remember me
+        </label>
+    </form>
+</div>

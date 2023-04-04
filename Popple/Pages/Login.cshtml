@@ -1,13 +1,12 @@
-@* @page
+@page
 @model LoginModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Login Page";
 }
+<h1>@ViewData["Title"]</h1>
 
 <div class="container">
-    <h2>Login</h2>
-    <hr />
-    <form method="post">
+  <form method="post">
         <div class="form-group">
             <label for="Email">Email address</label>
             <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter email">
@@ -17,6 +16,8 @@
             <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <label>
+          <input type="checkbox" checked="unchecked" name="remember"> Remember me
+        </label>
     </form>
 </div>
-*@

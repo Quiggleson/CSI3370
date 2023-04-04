@@ -1,15 +1,17 @@
-/*using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
-using HelloWorld.Data;
-using HelloWorld.Models;
+//using HelloWorld.Data;
+//using HelloWorld.Models;
 
+namespace Popple.Pages;
 
-namespace HelloWorld.Pages;
+//namespace HelloWorld.Pages;
 public class LoginModel : PageModel
 {
+    /*
     private readonly TimecardContext _context;
     public LoginModel(TimecardContext context)
     {
@@ -19,16 +21,20 @@ public class LoginModel : PageModel
 
     [BindProperty]
     public string Email { get; set; }
+    private readonly ILogger<LoginModel> _logger;
 
     [BindProperty]
     public string Password { get; set; }
 
     public void OnGet()
+    public LoginModel(ILogger<LoginModel> logger)
     {
         // Show the login form
+        _logger = logger;
     }
 
     public async Task<IActionResult> OnPostAsync()
+    public void OnGet()
     {
         // IList to protect against accounts with duplicate emails
         IList<Employee> employee = await _context.Employee
@@ -51,7 +57,6 @@ public class LoginModel : PageModel
             ModelState.AddModelError("", "Invalid email or password");
             return Page();
         }
-    }
+    }*/
 
 }
-*/
