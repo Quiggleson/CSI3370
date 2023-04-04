@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/rob-quigs/Documents/CSI3370/Popple/Popple.csproj": {}
+    "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj": {}
   },
   "projects": {
-    "/home/rob-quigs/Documents/CSI3370/Popple/Popple.csproj": {
+    "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rob-quigs/Documents/CSI3370/Popple/Popple.csproj",
+        "projectUniqueName": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj",
         "projectName": "Popple",
-        "projectPath": "/home/rob-quigs/Documents/CSI3370/Popple/Popple.csproj",
-        "packagesPath": "/home/rob-quigs/.nuget/packages/",
-        "outputPath": "/home/rob-quigs/Documents/CSI3370/Popple/obj/",
+        "projectPath": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj",
+        "packagesPath": "C:\\Users\\npqst\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rob-quigs/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\npqst\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

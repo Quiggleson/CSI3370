@@ -23,7 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                        <li>
+                            <form method="get" action="SearchResults.cshtml">
+                                <input type="text" name="searchQuery" placeholder="Search here...">
+                                <button type="submit">Search</button>
+                            </form>
                         </li>
                     </ul>
                 </div>
