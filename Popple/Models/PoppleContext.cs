@@ -17,6 +17,8 @@ public partial class PoppleContext : DbContext
 
     public virtual DbSet<Account> Accounts { get; set; }
 
+    public virtual DbSet<Comic> Comics { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=poppledb.cyyjwudya0vk.us-east-2.rds.amazonaws.com;database=popple;uid=admin;pwd=PoppleDropple!1;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql"));
@@ -44,6 +46,30 @@ public partial class PoppleContext : DbContext
             entity.Property(e => e.Username)
                 .HasMaxLength(45)
                 .HasColumnName("username");
+        });
+
+        modelBuilder.Entity<Comic>(entity =>
+        {
+            entity.HasKey(e => e.ComicsId).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.CreatorId, "fk_Comics_1_idx");
+
+            entity.Property(e => e.ComicsId).ValueGeneratedNever();
+            entity.Property(e => e.CreatorId).HasColumnName("creatorId");
+            entity.Property(e => e.Description)
+                .HasMaxLength(750)
+                .HasColumnName("description");
+            entity.Property(e => e.Name)
+                .HasMaxLength(45)
+                .HasColumnName("name");
+            entity.Property(e => e.PostDate)
+                .HasColumnType("datetime")
+                .HasColumnName("postDate");
+
+            entity.HasOne(d => d.Creator).WithMany(p => p.Comics)
+                .HasForeignKey(d => d.CreatorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Comics_1");
         });
 
         OnModelCreatingPartial(modelBuilder);
