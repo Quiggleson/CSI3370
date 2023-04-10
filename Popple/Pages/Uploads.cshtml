@@ -1,0 +1,29 @@
+@page
+@model UploadsModel
+@{
+    ViewData["Title"] = "Uploads";
+}
+
+<h1>Uploads form</h1>
+<h2>You must have a creator role to upload!</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Choose a file to upload:</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+    <button type="submit" class="btn btn-primary">Uploads</button>
+</form>
+
+<hr />
+
+@if (Model.Files != null && Model.Files.Count > 0)
+{
+    <h2>Webcomics you have uploaded:</h2>
+    <ul>
+        @foreach (var file in Model.Files)
+        {
+            <li>@file</li>
+        }
+    </ul>
+}
