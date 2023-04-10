@@ -11158,19 +11158,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\npqst\\.nuget\\packages\\": {}
+    "/Users/joshua.rao/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj",
+      "projectUniqueName": "/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Popple.csproj",
       "projectName": "Popple",
-      "projectPath": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\Popple.csproj",
-      "packagesPath": "C:\\Users\\npqst\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\npqst\\Documents\\GitHub\\CSI3370\\Popple\\obj\\",
+      "projectPath": "/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Popple.csproj",
+      "packagesPath": "/Users/joshua.rao/.nuget/packages/",
+      "outputPath": "/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\npqst\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/joshua.rao/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -11248,7 +11248,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }
