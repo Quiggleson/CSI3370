@@ -38,6 +38,10 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Account?.AccountId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    @{
+        var accountID = HttpContext.Session.GetInt32("AccountId");
+        var accountIDString = accountID.ToString();
+    }
+    <a asp-page="./Edit" asp-route-id="@accountIDString">Edit</a> |
+    <a asp-page="./Index">Back to Popple Directory</a>
 </div>

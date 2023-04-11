@@ -47,6 +47,7 @@ public class LoginModel : PageModel
         {
             HttpContext.Session.SetInt32("AccountId", Account[0].AccountId);
             HttpContext.Session.SetString("Username", Account[0].Username);
+            HttpContext.Session.SetString("Role", Account[0].Role);
             // Redirect to the home page
             return RedirectToPage("/Index");
         }
