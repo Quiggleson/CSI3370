@@ -70,7 +70,8 @@ public partial class PoppleContext : DbContext
 
         modelBuilder.Entity<Favorite>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.AccountId).HasName("PRIMARY");
+            entity.HasKey(e => e.ComicName).HasName("PRIMARY");
 
             entity.HasIndex(e => e.ComicName, "fk_Favorites_Comics1_idx");
 

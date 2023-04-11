@@ -6,61 +6,89 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Popple.Pages;
-public class ComicModel : PageModel
+namespace Popple.Pages
 {
-
-    private readonly PoppleContext _context;
-    private readonly IAmazonS3 _client;
-
-    public string link { get; set; }
-    public string Username { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public ComicModel(PoppleContext context, IAmazonS3 client)
+    public class ComicModel : PageModel
     {
-        _client = client;
-        _context = context;
-    }
-    public static string GetContents(string path)
-    {
-        HttpWebRequest request = HttpWebRequest.Create(path) as HttpWebRequest;
-        HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
-        using (Stream stream = response.GetResponseStream())
-        using (StreamReader reader = new StreamReader(stream))
+        private readonly PoppleContext _context;
+        private readonly IAmazonS3 _client;
+
+        public string link { get; set; }
+        public string Username { get; set; }
+        public string ComicName { get; set; }
+        public string Description { get; set; }
+        public ComicModel(PoppleContext context, IAmazonS3 client)
         {
-            return reader.ReadToEnd();
+            _client = client;
+            _context = context;
         }
-    }
-    public async Task<IActionResult> OnGetAsync(string username, string comicId)
-    {
-        Username = username;
-        string ComicName = comicId.Split('.')[0];
-        Console.WriteLine($"{username}/{ComicName}");
-        IList<Comic> comics = await _context.Comics
-            .Where(c => c.ComicName.Equals(ComicName))
-            .ToListAsync();
-        if (comics == null || comics.Count == 0)
+        public async Task<IActionResult> OnGetAsync(string username, string comicName)
         {
-            Console.WriteLine("oi it's gone!");
-            return NotFound();
+            Username = username;
+            ComicName = comicName.Split('.')[0];
+            IList<Comic> comics = await _context.Comics
+                .Where(c => c.ComicName.Equals(ComicName))
+                .ToListAsync();
+            if (comics == null || comics.Count == 0)
+            {
+                Console.WriteLine("oi it's gone!");
+                return NotFound();
+            }
+
+            Description = comics[0].ComicDescription;
+
+            GetPreSignedUrlRequest request = new GetPreSignedUrlRequest
+            {
+                BucketName = "popples3",
+                Key = $"{username}/{ComicName}",
+                Expires = DateTime.UtcNow.AddMinutes(5)
+            };
+
+            link = await Task.Run(() => _client.GetPreSignedURL(request));
+
+            int accountId = (int)HttpContext.Session.GetInt32("AccountId");
+            Favorite favorite = await _context.Favorites
+                .FirstOrDefaultAsync(f => f.AccountId == accountId && f.ComicName == ComicName);
+
+            if (favorite != null)
+            {
+                ViewData["IsFavorite"] = true;
+            }
+            else
+            {
+                ViewData["IsFavorite"] = false;
+            }
+
+            return Page();
         }
 
-        Name = comics[0].ComicName;
-        Description = comics[0].ComicDescription;
 
-        GetPreSignedUrlRequest request = new GetPreSignedUrlRequest
+        public async Task<IActionResult> OnPostFavoriteAsync()
         {
-            BucketName = "popples3",
-            Key = $"{username}/{ComicName}",
-            Expires = DateTime.UtcNow.AddMinutes(5)
-        };
+            Favorite favorite = new Favorite
+            {
+                AccountId = (int)HttpContext.Session.GetInt32("AccountId"),
+                ComicName = Request.Form["comicName"]
+            };
 
-        link = await Task.Run(() => _client.GetPreSignedURL(request));
+            _context.Add(favorite);
+            await _context.SaveChangesAsync();
+            return RedirectToPage();
+        }
 
+        public async Task<IActionResult> OnPostUnfavoriteAsync()
+        {
+            Favorite favorite = new Favorite
+            {
+                AccountId = (int)HttpContext.Session.GetInt32("AccountId"),
+                ComicName = Request.Form["comicName"]
+            };
 
-        return Page();
+            _context.Remove(favorite);
+            await _context.SaveChangesAsync();
+            return RedirectToPage();
+        }
+
     }
-
 }
