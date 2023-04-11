@@ -1,0 +1,17 @@
+@page "/{username}/{comicId}"
+@model Popple.Pages.ComicModel
+@{
+    ViewData["Title"] = "Comic";
+}
+
+<div style="text-align:center;">
+    <img src="@Model.link" style="max-width:60%;">
+</div>
+
+<a href="./">Back to Comics</a>
+
+<h2>Comic Title:</h2>
+<p>@Model.Name</p>
+
+<h2>Comic Description:</h2>
+<p>@Model.Description</p>
