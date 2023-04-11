@@ -21,7 +21,9 @@ namespace Popple.Pages
         public UploadsModel(IAmazonS3 s3Client)
         {
             _s3Client = s3Client;
-            _bucketName = "popples3"; // Replace with your actual S3 bucket name - the username of a creator
+            _bucketName = "popples3"; // Placeholder. Replace with your actual S3 bucket name - the username of a creator
+            //_bucketName = _context.{Account instance}.Username
+            
             /*HttpContext.Session.SetInt32("eId", employee[0].eId);
             HttpContext.Session.SetString("eName", employee[0].eName);
             HttpContext.Session.SetString("eUsername", employee[0].eUsername);
@@ -64,7 +66,7 @@ namespace Popple.Pages
 
         private async Task<List<string>> GetFilesAsync()
         {
-            var response = await _s3Client.ListObjectsAsync(_bucketName);
+            var response = await _s3Client.ListObjectsAsync(_bucketName); //_bucketName to be later replaced by _context.{Account instance}.Username
             var files = response.S3Objects.Select(x => x.Key).ToList();
             return files;
         }

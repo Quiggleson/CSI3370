@@ -12,6 +12,7 @@ namespace Popple.Pages.Accounts
     public class DetailsModel : PageModel
     {
         private readonly Popple.Models.PoppleContext _context;
+        
 
         public DetailsModel(Popple.Models.PoppleContext context)
         {
