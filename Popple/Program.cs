@@ -67,6 +67,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 builder.Services.AddAWSService<IAmazonS3>();
 
+builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.Name = ".Popple.Session";
+                options.Cookie.IsEssential = true;
+            });
+
 builder.Services.AddDbContext<PoppleContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
@@ -89,6 +96,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapRazorPages();
 

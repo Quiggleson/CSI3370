@@ -4,59 +4,58 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 //using HelloWorld.Data;
-//using HelloWorld.Models;
+using Popple.Models;
 
 namespace Popple.Pages;
 
 //namespace HelloWorld.Pages;
 public class LoginModel : PageModel
 {
-    /*
-    private readonly TimecardContext _context;
-    public LoginModel(TimecardContext context)
+    
+    private readonly Popple.Models.PoppleContext _context;
+    public LoginModel(Popple.Models.PoppleContext context)
     {
         _context = context;
         Console.Write("context exists");
     }
-
+    
     [BindProperty]
     public string Email { get; set; }
-    private readonly ILogger<LoginModel> _logger;
+    //private readonly ILogger<LoginModel> _logger;
 
     [BindProperty]
     public string Password { get; set; }
-
+    /*
     public void OnGet()
     public LoginModel(ILogger<LoginModel> logger)
     {
         // Show the login form
         _logger = logger;
     }
-
+    */
     public async Task<IActionResult> OnPostAsync()
-    public void OnGet()
     {
         // IList to protect against accounts with duplicate emails
-        IList<Employee> employee = await _context.Employee
-            .Where(_ => _.eEmail.Equals(Email))
+        IList<Account> Account = await _context.Accounts
+            .Where(_ => _.Email.Equals(Email))
             .ToListAsync();
 
         // Authenticate the user
-        if (employee.Count == 0 || Password == null)
+        if (Account.Count == 0 || Password == null)
             return RedirectToPage();
-        if (Password.Equals(employee[0].ePassword))
+        if (Password.Equals(Account[0].Password))
         {
-            HttpContext.Session.SetInt32("eId", employee[0].eId);
-            HttpContext.Session.SetString("eName", employee[0].eName);
+            HttpContext.Session.SetInt32("AccountId", Account[0].AccountId);
+            HttpContext.Session.SetString("Username", Account[0].Username);
             // Redirect to the home page
-            return RedirectToPage("timeentry");
+            return RedirectToPage("/Index");
         }
         else
         {
             // Authentication failed, show error message
             ModelState.AddModelError("", "Invalid email or password");
-            return Page();
+            return RedirectToPage();
         }
-    }*/
+    }
 
 }
