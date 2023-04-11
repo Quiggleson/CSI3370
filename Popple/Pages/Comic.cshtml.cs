@@ -1,5 +1,4 @@
 using Popple.Models;
-using Popple.Services;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.Net;
