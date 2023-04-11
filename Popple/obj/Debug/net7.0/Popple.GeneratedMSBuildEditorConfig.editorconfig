@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Popple
+build_property.RootNamespace = Popple
+build_property.ProjectDir = /Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Accounts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudHMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Accounts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudHMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Accounts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudHMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Accounts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudHMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Accounts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Comic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29taWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/SearchResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VhcmNoUmVzdWx0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/tests3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvdGVzdHMzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Uploads.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBsb2Fkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/joshua.rao/Documents/Oakland University Course Stuff/OU 2022-2023/Winter 2023/CSI3370 Software Engineering and Practice/Project Related/Github Clone/CSI3370/Popple/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-i3fedkqrwy
