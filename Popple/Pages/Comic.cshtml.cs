@@ -37,22 +37,23 @@ public class ComicModel : PageModel
     {
         Username = username;
         string ComicName = comicId.Split('.')[0];
+        Console.WriteLine($"{username}/{ComicName}");
         IList<Comic> comics = await _context.Comics
-            .Where(c => c.Name.Equals(ComicName))
+            .Where(c => c.ComicName.Equals(ComicName))
             .ToListAsync();
-        if (comics == null)
+        if (comics == null || comics.Count == 0)
         {
             Console.WriteLine("oi it's gone!");
             return NotFound();
         }
 
-        Name = comics[0].Name;
-        Description = comics[0].Description;
+        Name = comics[0].ComicName;
+        Description = comics[0].ComicDescription;
 
         GetPreSignedUrlRequest request = new GetPreSignedUrlRequest
         {
             BucketName = "popples3",
-            Key = $"{username}/{ComicName}.png",
+            Key = $"{username}/{ComicName}",
             Expires = DateTime.UtcNow.AddMinutes(5)
         };
 

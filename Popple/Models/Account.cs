@@ -15,6 +15,5 @@ public partial class Account
 
     public string Role { get; set; } = null!;
 
-    public virtual ICollection<Comic> Comics { get; } = new List<Comic>(); //Intended for a list of a Creator's uploaded comics
-
+    public virtual ICollection<Comic> Comics { get; } = new List<Comic>();
 }

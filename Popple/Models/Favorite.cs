@@ -7,9 +7,9 @@ public partial class Favorite
 {
     public int AccountId { get; set; }
 
-    public int ComicsId { get; set; }
+    public string ComicName { get; set; } = null!;
 
     public virtual Account Account { get; set; } = null!;
 
-    public virtual Comic Comics { get; set; } = null!;
+    public virtual Comic ComicNameNavigation { get; set; } = null!;
 }

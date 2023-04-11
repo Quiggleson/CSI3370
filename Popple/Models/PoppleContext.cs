@@ -35,7 +35,6 @@ public partial class PoppleContext : DbContext
         {
             entity.HasKey(e => e.AccountId).HasName("PRIMARY");
 
-            entity.Property(e => e.AccountId).ValueGeneratedNever();
             entity.Property(e => e.Email)
                 .HasMaxLength(45)
                 .HasColumnName("email");
@@ -52,18 +51,13 @@ public partial class PoppleContext : DbContext
 
         modelBuilder.Entity<Comic>(entity =>
         {
-            entity.HasKey(e => e.ComicsId).HasName("PRIMARY");
+            entity.HasKey(e => e.ComicName).HasName("PRIMARY");
 
             entity.HasIndex(e => e.CreatorId, "fk_Comics_1_idx");
 
-            entity.Property(e => e.ComicsId).ValueGeneratedNever();
+            entity.Property(e => e.ComicName).HasMaxLength(45);
+            entity.Property(e => e.ComicDescription).HasMaxLength(750);
             entity.Property(e => e.CreatorId).HasColumnName("creatorId");
-            entity.Property(e => e.Description)
-                .HasMaxLength(750)
-                .HasColumnName("description");
-            entity.Property(e => e.Name)
-                .HasMaxLength(45)
-                .HasColumnName("name");
             entity.Property(e => e.PostDate)
                 .HasColumnType("datetime")
                 .HasColumnName("postDate");
@@ -78,19 +72,21 @@ public partial class PoppleContext : DbContext
         {
             entity.HasNoKey();
 
+            entity.HasIndex(e => e.ComicName, "fk_Favorites_Comics1_idx");
+
             entity.HasIndex(e => e.AccountId, "fk_table1_Accounts1_idx");
 
-            entity.HasIndex(e => e.ComicsId, "fk_table1_Comics1_idx");
+            entity.Property(e => e.ComicName).HasMaxLength(45);
 
             entity.HasOne(d => d.Account).WithMany()
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_table1_Accounts1");
 
-            entity.HasOne(d => d.Comics).WithMany()
-                .HasForeignKey(d => d.ComicsId)
+            entity.HasOne(d => d.ComicNameNavigation).WithMany()
+                .HasForeignKey(d => d.ComicName)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_table1_Comics1");
+                .HasConstraintName("fk_Favorites_Comics1");
         });
 
         OnModelCreatingPartial(modelBuilder);

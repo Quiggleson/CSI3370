@@ -5,13 +5,11 @@ namespace Popple.Models;
 
 public partial class Comic
 {
-    public int ComicsId { get; set; }
-
-    public string Name { get; set; } = null!;
+    public string ComicName { get; set; } = null!;
 
     public DateTime PostDate { get; set; }
 
-    public string? Description { get; set; }
+    public string? ComicDescription { get; set; }
 
     public int CreatorId { get; set; }
 
