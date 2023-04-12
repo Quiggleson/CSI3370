@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Popple.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Popple.Pages
 {
@@ -17,23 +18,23 @@ namespace Popple.Pages
     {
         private readonly IAmazonS3 _s3Client;
         private readonly string _bucketName;
+        private readonly Popple.Models.PoppleContext _context;
 
-        public UploadsModel(IAmazonS3 s3Client)
+        public UploadsModel(IAmazonS3 s3Client, Popple.Models.PoppleContext context)
         {
             _s3Client = s3Client;
-            _bucketName = "popples3"; // Placeholder. Replace with your actual S3 bucket name - the username of a creator
-            //_bucketName = _context.{Account instance}.Username
-            
-            /*HttpContext.Session.SetInt32("eId", employee[0].eId);
-            HttpContext.Session.SetString("eName", employee[0].eName);
-            HttpContext.Session.SetString("eUsername", employee[0].eUsername);
-            HttpContext.Session.SetString("eRole", employee[0].eRole);*/ //For temporary session info
+            _bucketName = "popples3"; 
+            _context = context;
+            Console.Write("context exists");
         }
 
         public List<string> Files { get; set; }
         
         [BindProperty]
         public Account Account { get; set; } = default!;
+
+        [BindProperty]
+        public Comic Comic { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -42,11 +43,12 @@ namespace Popple.Pages
 
         public async Task<IActionResult> OnPostAsync(IFormFile file)
         {
-            if (file != null && file.Length > 0 ) //Checks for creator Role if (&& _context.AccountsObject.Role == "Creator") added
+            if (file != null && file.Length > 0 && HttpContext.Session.GetString("Role").Equals("Creator")) //Checks for creator Role if (&& _context.AccountsObject.Role == "Creator") added
+            //Why doesn't ToLowerCase() work here?
             {
-                var transferUtility = new TransferUtility(_s3Client);
+                var transferUtility = new TransferUtility(_s3Client); 
+                String key = "" + HttpContext.Session.GetString("Username") + "/" + Comic.ComicName;
 
-                var key = Path.GetFileName(file.FileName);
                 var fileTransferUtilityRequest = new TransferUtilityUploadRequest
                 {
                     BucketName = _bucketName,
@@ -56,6 +58,17 @@ namespace Popple.Pages
                     CannedACL = S3CannedACL.PublicRead // Make the uploaded file publicly accessible
                 };
 
+                // IList to protect against comics with duplicate titles
+                IList<Comic> Comics = await _context.Comics
+                    .Where(_ => _.ComicName.Equals(Comic.ComicName))
+                    .ToListAsync();
+
+                //Assigning Comic post data members not already assigned via identical HTML backend naming:
+                Comic.PostDate = DateTime.Now;
+                Comic.CreatorId = (int) HttpContext.Session.GetInt32("AccountId");
+                _context.Add(Comic);
+                await _context.SaveChangesAsync();
+                
                 await transferUtility.UploadAsync(fileTransferUtilityRequest);
 
                 return RedirectToPage("./Uploads");

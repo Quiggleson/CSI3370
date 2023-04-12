@@ -12,7 +12,22 @@
         <label for="file">Choose a file to upload:</label>
         <input type="file" name="file" id="file" class="form-control-file">
     </div>
-    <button type="submit" class="btn btn-primary">Uploads</button>
+    <div class="form-group">
+            <label for="ComicName">Comic Name</label>
+            <input type="ComicName" class="form-control" id="ComicName" name="ComicName" placeholder="Put in your Comic Name - it must be unique and under 45 characters!">
+    </div>
+    <div class="form-group">
+            <label for="ComicDescription">Comic Description</label>
+            <input type="ComicDescription" class="form-control" id="ComicDescription" name="ComicDescription" placeholder="Describe your comic in under 750 words.">
+    </div>
+     
+    <button type="submit" class="btn btn-primary">Upload your webcomic!</button>
+    
+    <!-- For DateTime PostDate -->
+    @{ var publishDate = DateTime.Now; }
+    
+    <p>Your comic's publishing date and time is: @publishDate</p>
+
 </form>
 
 <hr />

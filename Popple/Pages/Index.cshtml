@@ -5,6 +5,12 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @{
+        String ?sessionUser = HttpContext.Session.GetString("Username");
+        if (String.IsNullOrEmpty(sessionUser)) 
+            sessionUser = "Guest";
+    }
+    <h1 class="display-4">Welcome @sessionUser to Popple!</h1>
+    
+    <p>A place to upload and view your favorite webcomics</p>
 </div>

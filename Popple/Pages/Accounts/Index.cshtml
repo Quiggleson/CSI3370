@@ -2,53 +2,51 @@
 @model Popple.Pages.Accounts.IndexModel
 
 @{
-    ViewData["Title"] = "Profiles";
+    ViewData["Title"] = "Directory";
 }
 
-<h1>Profiles</h1>
+<h1>Directory</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New Account</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].Email)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Account[0].Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Account[0].Password)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Account[0].Role)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Email)
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Account) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Role)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.AccountId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AccountId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AccountId">Delete</a>
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
         </tr>
 }
+<div>
+    @{
+        var accountID = HttpContext.Session.GetInt32("AccountId");
+        var accountIDString = accountID.ToString();
+    }
+    <a asp-page="./Edit" asp-route-id= "@accountIDString" >Edit</a> | 
+    <a asp-page="./Details" asp-route-id="@accountIDString">Details</a> |
+    <a asp-page="./Delete" asp-route-id="@accountIDString">Delete</a>
+</div>
+
     </tbody>
 </table>
