@@ -1,0 +1,23 @@
+@page "/{username}"
+@model Popple.Pages.CreatorModel
+@{
+    ViewData["Title"] = "Creator";
+}
+
+<h2>@Model.Username's Comics</h2>
+
+@if (Model.Comics != null && Model.Comics.Any())
+{
+    <ul>
+        @foreach (var comic in Model.Comics)
+        {
+            <li>
+                <a href="/@Model.Username/@comic.ComicName">@comic.ComicName</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No comics found.</p>
+}
