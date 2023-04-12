@@ -79,7 +79,7 @@ namespace Popple.Pages
 
         private async Task<List<string>> GetFilesAsync()
         {
-            var response = await _s3Client.ListObjectsAsync(_bucketName); //_bucketName to be later replaced by _context.{Account instance}.Username
+            var response = await _s3Client.ListObjectsAsync(_bucketName); 
             var files = response.S3Objects.Select(x => x.Key).ToList();
             return files;
         }

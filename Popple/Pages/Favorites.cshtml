@@ -1,0 +1,63 @@
+@page
+@model Popple.Pages.FavoritesModel
+
+@{
+    ViewData["Title"] = "Favorites";
+}
+
+<h1>Enter in a new favorite (manually):</h1>
+<hr />
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Favorite.ComicName">Comic Name</label>
+        <input type="Favorite.ComicName" class="form-control" id="Favorite.ComicName" name="Favorite.ComicName" placeholder="Put in the name of comic you wish to favorite. Make sure the spelling is correct."
+    </div>
+    <button type="submit" class="btn btn-primary">Favorite that Comic!</button
+</form>
+
+<hr />
+
+<h1>Here are your favorites!</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <<th>
+                Comic Name
+            </th>
+            <<th>
+                Comic's Creator
+            </th>
+            <th>
+                URL to Comic
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model.FavoritesList) {
+    {  int i = 0;
+        if (Model.FavoritesList[i].AccountId == HttpContext.Session.GetInt32("AccountId")) { 
+            //Gets all favorites with key AccountId from HTTP session token
+        <tr>
+            <td>
+                FavoriteList[i].ComicName
+            </td>
+            <td>
+                FavoriteList[i].ComicNameNavigation.Creator.Username
+                /*In theory: Gets the Favorite object from the list, uses ComicNameNavigation to get the associated Creator object
+                which is then used to get the Username of the Creator of the favorited comic.*/
+            </td>
+            <td>
+                <a asp-page="./CreatorUsername/" + FavoriteList[i].ComicName> </a> 
+            </td>
+        </tr>
+
+        i++; //increment through the logged in user's favorites list
+        }
+    }
+        
+}
+    </tbody>
+</table>

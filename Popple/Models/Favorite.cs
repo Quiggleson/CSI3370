@@ -12,4 +12,5 @@ public partial class Favorite
     public virtual Account Account { get; set; } = null!;
 
     public virtual Comic ComicNameNavigation { get; set; } = null!;
+    
 }

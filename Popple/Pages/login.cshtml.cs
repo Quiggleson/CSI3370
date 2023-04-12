@@ -1,8 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 //using HelloWorld.Data;
 using Popple.Models;
 
@@ -18,6 +23,7 @@ public class LoginModel : PageModel
         _context = context;
         Console.Write("context exists");
     }
+    
     
     [BindProperty]
     public string Email { get; set; }
