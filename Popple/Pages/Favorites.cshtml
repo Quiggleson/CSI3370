@@ -11,9 +11,9 @@
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Favorite.ComicName">Comic Name</label>
-        <input type="Favorite.ComicName" class="form-control" id="Favorite.ComicName" name="Favorite.ComicName" placeholder="Put in the name of comic you wish to favorite. Make sure the spelling is correct."
+        <input type="Favorite.ComicName" class="form-control" id="Favorite.ComicName" name="Favorite.ComicName" placeholder="Put in the name of comic you wish to favorite. Make sure the spelling is correct.">
     </div>
-    <button type="submit" class="btn btn-primary">Favorite that Comic!</button
+    <button type="submit" class="btn btn-primary">Favorite that Comic!</button>
 </form>
 
 <hr />
@@ -23,10 +23,10 @@
 <table class="table">
     <thead>
         <tr>
-            <<th>
+            <th>
                 Comic Name
             </th>
-            <<th>
+            <th>
                 Comic's Creator
             </th>
             <th>
@@ -50,7 +50,8 @@
                 which is then used to get the Username of the Creator of the favorited comic.*/
             </td>
             <td>
-                <a asp-page="./CreatorUsername/" + FavoriteList[i].ComicName> </a> 
+                var FavoriteList[i].ComicName
+                <a asp-page="./CreatorUsername/"> </a> 
             </td>
         </tr>
 
