@@ -26,9 +26,14 @@ namespace Popple.Pages
                 Comics = _context.Comics.Where(c => c.ComicName.Contains(searchQuery)).ToList();
 
                 Accounts = _context.Accounts
-                    .Where(a => a.Username.Contains(searchQuery) || 
+                    .Where(a => a.Username.Contains(searchQuery) ||
                                 a.Comics.Any(c => c.ComicName.Contains(searchQuery)))
                     .ToList();
+
+                foreach (var account in Accounts)
+                {
+                    Comics.AddRange(_context.Comics.Where(c => c.CreatorId == account.AccountId && !c.ComicName.Contains(searchQuery)).ToList());
+                }
             }
         }
     }
