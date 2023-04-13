@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,64 +15,42 @@ namespace Popple.Pages
 {
     public class FavoritesModel : PageModel
     {
-        private readonly Popple.Models.PoppleContext _context;
+        private readonly PoppleContext _context;
 
-        public FavoritesModel(Popple.Models.PoppleContext context)
+        public FavoritesModel(PoppleContext context)
         {
             _context = context;
-            Console.WriteLine("Context exists");
         }
 
-        [BindProperty]
-        public Favorite Favorite { get;set; } = default!;
+        public IList<Favorite> FavoritesList { get; set; } = default!;
+        public IList<Account> AccountsList { get; set; }
 
-        [BindProperty]
-        public Account Account { get;set; } = default!;
-
-        [BindProperty]
-        public Comic Comic { get;set; } = default!;
-
-        public IList<Favorite> FavoritesList { get;set; } = default!;
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid || _context.Favorites == null || Favorite == null) {
-                return Page();
-            }
-
-            int sessionAccountId = (int) HttpContext.Session.GetInt32("AccountId");
-            Favorite newFavorite = new Favorite();
-            Favorite.AccountId = sessionAccountId;
-            //Favorite.ComicName is dealt with in the backend.
-            Account ?userAccount = _context.Accounts.FirstOrDefault(a => a.AccountId == sessionAccountId);
-            Comic ?newFavoriteComic = _context.Comics.FirstOrDefault(a => a.ComicName == Favorite.ComicName);
-            Favorite.Account = userAccount;
-            Favorite.ComicNameNavigation = newFavoriteComic;
-            _context.Favorites.Add(Favorite);
-            await _context.SaveChangesAsync();
-            
-            //Gets user account and comic objects from database for the Favorite object's Account and 
-            //ComicNameNavigation properties
-            /*if (userAccount != null && newFavoriteComic != null) {  
-                Favorite.Account = userAccount;
-                Favorite.ComicNameNavigation = newFavoriteComic;
-                _context.Favorites.Add(Favorite);
-                await _context.SaveChangesAsync();
-            } else {
-                RedirectToPage("./Favorites");
-            }*/
-            
-            return RedirectToPage("./Favorites");
-        }
-        
         public async Task OnGetAsync()
-        {     
-            if (_context.Favorites != null) {
-                //Front end attempt to get a personalized list.
-                //int sessionAccountId = (int) HttpContext.Session.GetInt32("AccountId"); 
-                //FavoritesList = await _context.Favorites.Where(Favorite, Favorite.AccountId == sessionAccountId).ToListAsync();
-                FavoritesList = await _context.Favorites.ToListAsync();
+        {
+            int? accountId = HttpContext.Session.GetInt32("AccountId");
+            if (accountId != null)
+            {
+                var favoritesQuery = _context.Favorites
+                    .Where(f => f.AccountId == accountId.Value)
+                    .Include(f => f.ComicNameNavigation);
+                var accountsQuery = _context.Accounts.AsQueryable();
+                var result = await favoritesQuery.Join(
+                    _context.Comics,
+                    f => f.ComicName,
+                    c => c.ComicName,
+                    (f, c) => new { Favorite = f, Comic = c }
+                ).Join(
+                    accountsQuery,
+                    fc => fc.Comic.CreatorId,
+                    a => a.AccountId,
+                    (fc, a) => new { Favorite = fc.Favorite, Account = a }
+                ).ToListAsync();
+                var favoritesWithCreator = result.Select(
+                    r => new { r.Favorite.ComicName, r.Account.Username }
+                );
+                ViewData["FavoritesWithCreator"] = favoritesWithCreator;
             }
         }
+
     }
-}*/
+}

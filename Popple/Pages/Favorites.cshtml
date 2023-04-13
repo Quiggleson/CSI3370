@@ -9,43 +9,37 @@
 
 <h1>Here are your favorites!</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Comic Name
-            </th>
-            <th>
-                Comic's Creator
-            </th>
-            <th>
-                URL to Comic
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-
-@foreach (var item in Model.FavoritesList) {
-    {  int i = 0;
-        if (Model.FavoritesList[i].AccountId == HttpContext.Session.GetInt32("AccountId")) { 
-            //Gets all favorites with key AccountId from HTTP session token
-        <tr>
-            <td>
-                FavoriteList[i].ComicName
-            </td>
-            <td>
-                FavoriteList[i].ComicNameNavigation.Creator.Username
-                /*In theory: Gets the Favorite object from the list, uses ComicNameNavigation to get the associated Creator object
-                which is then used to get the Username of the Creator of the favorited comic.*/
-            </td>
-            <td>
-                var FavoriteList[i].ComicName
-                <a asp-page="./CreatorUsername/"> </a> 
-            </td>
-        </tr>
-        }
-    }
-        
+@if (ViewData.ContainsKey("FavoritesWithCreator")) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Comic Name
+                </th>
+                <th>
+                    Comic's Creator
+                </th>
+                <th>
+                    URL to Comic
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var favoriteWithCreator in ViewData["FavoritesWithCreator"] as IEnumerable<dynamic>) {
+                <tr>
+                    <td>
+                        @favoriteWithCreator.ComicName
+                    </td>
+                    <td>
+                        @favoriteWithCreator.Username
+                    </td>
+                    <td>
+                        <a href="/@favoriteWithCreator.Username/@favoriteWithCreator.ComicName">Go to Comic</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else {
+    <p>You don't have any favorites yet.</p>
 }
-    </tbody>
-</table>
