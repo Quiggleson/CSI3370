@@ -38,6 +38,10 @@ namespace Popple.Pages.Accounts
             _context.Accounts.Add(Account);
             await _context.SaveChangesAsync();
 
+            HttpContext.Session.SetInt32("AccountId", Account.AccountId);
+            HttpContext.Session.SetString("Username", Account.Username);
+            HttpContext.Session.SetString("Role", Account.Role);
+
             return RedirectToPage("./Index");
         }
     }

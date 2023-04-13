@@ -5,11 +5,20 @@
     ViewData["Title"] = "Directory";
 }
 
-<h1>Directory</h1>
+<h1>Account Actions:</h1>
+<div>
+    @{
+        var accountID = HttpContext.Session.GetInt32("AccountId");
+        var accountIDString = accountID.ToString();
+    }
+    <a asp-page="./Edit" asp-route-id= "@accountIDString" >Edit</a> | 
+    <a asp-page="./Details" asp-route-id="@accountIDString">Details</a> |
+    <a asp-page="./Delete" asp-route-id="@accountIDString">Delete</a>
+</div>
 
-<p>
-    <a asp-page="Create">Create New Account</a>
-</p>
+<hr />
+
+<h2>Directory</h2>
 <table class="table">
     <thead>
         <tr>
@@ -38,15 +47,6 @@
             </td>
         </tr>
 }
-<div>
-    @{
-        var accountID = HttpContext.Session.GetInt32("AccountId");
-        var accountIDString = accountID.ToString();
-    }
-    <a asp-page="./Edit" asp-route-id= "@accountIDString" >Edit</a> | 
-    <a asp-page="./Details" asp-route-id="@accountIDString">Details</a> |
-    <a asp-page="./Delete" asp-route-id="@accountIDString">Delete</a>
-</div>
 
     </tbody>
 </table>

@@ -42,7 +42,7 @@ namespace Popple.Pages.Accounts
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) 
             {
                 return Page();
             }
@@ -52,6 +52,7 @@ namespace Popple.Pages.Accounts
             try
             {
                 await _context.SaveChangesAsync();
+                HttpContext.Session.SetString("Username", Account.Username);
             }
             catch (DbUpdateConcurrencyException)
             {
