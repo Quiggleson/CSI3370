@@ -42,7 +42,7 @@ namespace Popple.Pages.Accounts
             HttpContext.Session.SetString("Username", Account.Username);
             HttpContext.Session.SetString("Role", Account.Role);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

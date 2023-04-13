@@ -1,9 +1,38 @@
 @page
 @model SearchResultsModel
 @{
-    ViewData["Title"] = "Search Return Page";
+    ViewData["Title"] = "Search Results";
 }
-<h1>@ViewData["Title"]</h1>
-<p>
-    Search Results will display here.
-</p>
+
+<h1>Search Results</h1>
+
+@if (Model.Comics.Count == 0 && Model.Accounts.Count == 0)
+{
+    <p>No results found.</p>
+}
+else
+{
+    @if (Model.Comics.Count > 0)
+    {
+        <h2>Comics:</h2>
+        <ul>
+            @foreach (var comic in Model.Comics)
+{
+    var creatorUsername = comic.Creator?.Username ?? "Unknown Creator";
+    <li><a href="/@creatorUsername/@comic.ComicName">@comic.ComicName</a></li>
+}
+
+        </ul>
+    }
+
+    @if (Model.Accounts.Count > 0)
+    {
+        <h2>Accounts:</h2>
+        <ul>
+            @foreach (var account in Model.Accounts)
+            {
+                <li><a href="/@account.Username">@account.Username</a></li>
+            }
+        </ul>
+    }
+}

@@ -19,34 +19,41 @@
 <hr />
 
 <h2>Directory</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Account[0].Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Account[0].Role)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Account[0].Email)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Account) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-        </tr>
+@if (Model.Account != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].Role)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Account)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-
-    </tbody>
-</table>
+else
+{
+    <p>No accounts found.</p>
+}

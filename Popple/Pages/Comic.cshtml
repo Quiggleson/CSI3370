@@ -4,29 +4,29 @@
     ViewData["Title"] = "Comic";
 }
 
-
 <h2>@Model.ComicName</h2>
 
 <div style="text-align:center;">
     <img src="@Model.link" style="max-width:60%;">
 </div>
 
-@if ((bool)ViewData["IsFavorite"])
+@if (HttpContext.Session.GetInt32("AccountId") != null)
 {
-    <form method="post" asp-page-handler="Unfavorite">
-        <input type="hidden" name="comicName" value="@Model.ComicName" />
-        <input type="submit" value="Remove from Favorites" />
-    </form>
+    if ((bool)ViewData["IsFavorite"])
+    {
+        <form method="post" asp-page-handler="Unfavorite">
+            <input type="hidden" name="comicName" value="@Model.ComicName" />
+            <input type="submit" value="Remove from Favorites" />
+        </form>
+    }
+    else
+    {
+        <form method="post" asp-page-handler="Favorite">
+            <input type="hidden" name="comicName" value="@Model.ComicName" />
+            <input type="submit" value="Add to Favorites" />
+        </form>
+    }
 }
-else
-{
-    <form method="post" asp-page-handler="Favorite">
-        <input type="hidden" name="comicName" value="@Model.ComicName" />
-        <input type="submit" value="Add to Favorites" />
-    </form>
-}
-
-
 
 <h2>Comic Description:</h2>
 <p>@Model.Description</p>

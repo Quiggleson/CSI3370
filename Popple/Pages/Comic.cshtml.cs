@@ -46,20 +46,21 @@ namespace Popple.Pages
             };
 
             link = await Task.Run(() => _client.GetPreSignedURL(request));
-
-            int accountId = (int)HttpContext.Session.GetInt32("AccountId");
-            Favorite favorite = await _context.Favorites
-                .FirstOrDefaultAsync(f => f.AccountId == accountId && f.ComicName == ComicName);
-
-            if (favorite != null)
+            if (HttpContext.Session.GetInt32("AccountId") != null)
             {
-                ViewData["IsFavorite"] = true;
-            }
-            else
-            {
-                ViewData["IsFavorite"] = false;
-            }
+                int accountId = (int) HttpContext.Session.GetInt32("AccountId");
+                Favorite favorite = await _context.Favorites
+                    .FirstOrDefaultAsync(f => f.AccountId == accountId && f.ComicName == ComicName);
 
+                if (favorite != null)
+                {
+                    ViewData["IsFavorite"] = true;
+                }
+                else
+                {
+                    ViewData["IsFavorite"] = false;
+                }
+            }
             return Page();
         }
 

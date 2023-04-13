@@ -21,10 +21,12 @@ namespace Popple.Pages.Accounts
         public IList<Account> Account { get;set; } = default!;
 
         public async Task OnGetAsync()
-        {
-            if (_context.Accounts != null)
+        {        
+            if (_context.Accounts != null && (HttpContext.Session.GetInt32("AccountId") != null))
             {
-                Account = await _context.Accounts.ToListAsync();
+                Account = await _context.Accounts
+                .Where(_ => _.AccountId == HttpContext.Session.GetInt32("AccountId")) 
+                .ToListAsync();
             }
         }
     }
